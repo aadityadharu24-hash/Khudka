@@ -1,0 +1,352 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KHUDKA | Luxury Footwear</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f8f4ec;
+    color: #44382d;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 7%;
+    background: #eee5d6;
+}
+
+.logo {
+    font-size: 30px;
+    letter-spacing: 7px;
+    color: #a98549;
+    font-weight: bold;
+}
+
+nav a {
+    text-decoration: none;
+    color: #44382d;
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+.hero {
+    min-height: 480px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg,#e9ddc9,#faf5eb);
+}
+
+.hero h1 {
+    font-size: clamp(38px,7vw,65px);
+    letter-spacing: 5px;
+    color: #947344;
+}
+
+.hero p {
+    margin: 20px 0;
+    font-size: 17px;
+}
+
+button {
+    background: #a98549;
+    color: white;
+    border: none;
+    padding: 13px 25px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+button:hover {
+    background: #80602f;
+}
+
+section {
+    padding: 65px 7%;
+    text-align: center;
+}
+
+h2 {
+    font-size: 30px;
+    margin-bottom: 15px;
+    color: #987344;
+}
+
+.subtitle {
+    margin-bottom: 35px;
+    color: #786c5d;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(210px,1fr));
+    gap: 25px;
+}
+
+.product {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.product-image {
+    height: 190px;
+    background: #eee4d4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 85px;
+    margin-bottom: 15px;
+}
+
+.product h3 {
+    margin-bottom: 10px;
+}
+
+.product p {
+    margin-bottom: 15px;
+}
+
+.customizer {
+    background: #eee5d6;
+    padding: 35px;
+    max-width: 600px;
+    margin: auto;
+    border-radius: 8px;
+}
+
+.preview {
+    background: #faf6ef;
+    padding: 30px;
+    margin: 20px 0;
+    font-size: 100px;
+    border-radius: 5px;
+}
+
+label {
+    display: block;
+    margin: 20px 0 10px;
+    font-weight: bold;
+}
+
+select, input {
+    padding: 12px;
+    width: 100%;
+    border: 1px solid #c6b397;
+    background: white;
+    border-radius: 3px;
+}
+
+footer {
+    background: #45382b;
+    color: white;
+    padding: 35px;
+    text-align: center;
+}
+
+#cart {
+    color: #a98549;
+    font-weight: bold;
+}
+
+@media(max-width:600px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav a {
+        margin: 8px;
+    }
+
+    .customizer {
+        padding: 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">KHUDKA</div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#shop">Shop</a>
+        <a href="#customize">Customize</a>
+        <a href="#contact">Contact</a>
+        <span id="cart">Cart: 0</span>
+    </nav>
+</header>
+
+<div class="hero" id="home">
+    <div>
+        <h1>YOUR STYLE.<br>YOUR KHUDKA.</h1>
+        <p>Luxury footwear, designed by you.</p>
+        <a href="#customize">
+            <button>CREATE YOUR DESIGN</button>
+        </a>
+    </div>
+</div>
+
+<section id="shop">
+
+    <h2>THE COLLECTION</h2>
+    <p class="subtitle">Discover your everyday luxury.</p>
+
+    <div class="products">
+
+        <div class="product">
+            <div class="product-image">👡</div>
+            <h3>Classic Elegance</h3>
+            <p>₹899</p>
+            <button onclick="addCart()">Add to Cart</button>
+        </div>
+
+        <div class="product">
+            <div class="product-image">🩴</div>
+            <h3>Golden Touch</h3>
+            <p>₹1,199</p>
+            <button onclick="addCart()">Add to Cart</button>
+        </div>
+
+        <div class="product">
+            <div class="product-image">👡</div>
+            <h3>Royal Comfort</h3>
+            <p>₹1,499</p>
+            <button onclick="addCart()">Add to Cart</button>
+        </div>
+
+    </div>
+</section>
+
+<section id="customize">
+
+    <h2>DESIGN YOUR OWN</h2>
+    <p class="subtitle">Your imagination. Your footwear.</p>
+
+    <div class="customizer">
+
+        <div class="preview" id="preview">
+            👡
+        </div>
+
+        <label>Select Colour</label>
+
+        <select id="colour" onchange="changeDesign()">
+            <option value="#d9c4a3">Champagne Beige</option>
+            <option value="#171717">Luxury Black</option>
+            <option value="#ffffff">Classic White</option>
+            <option value="#c77d86">Rose Pink</option>
+            <option value="#795548">Chocolate Brown</option>
+            <option value="#bda5d5">Lavender</option>
+        </select>
+
+        <label>Select Size</label>
+
+        <select id="size">
+            <option>Size 5</option>
+            <option>Size 6</option>
+            <option>Size 7</option>
+            <option>Size 8</option>
+            <option>Size 9</option>
+        </select>
+
+        <label>Choose Your Design</label>
+
+        <select id="design">
+            <option>Minimalist</option>
+            <option>Floral</option>
+            <option>Luxury Stones</option>
+            <option>Personalized</option>
+        </select>
+
+        <label>Enter Your Customization Idea</label>
+
+        <input type="text" id="idea"
+        placeholder="Describe your dream slippers">
+
+        <br><br>
+
+        <button onclick="customOrder()">
+            ADD CUSTOM DESIGN TO CART
+        </button>
+
+        <p id="message" style="margin-top:20px;"></p>
+
+    </div>
+
+</section>
+
+<section id="contact">
+    <h2>ABOUT KHUDKA</h2>
+    <p>Your footwear should express your personality.</p>
+    <p>We believe every design tells a story.</p>
+    <br>
+    <p>Contact: hello@khudka.com</p>
+</section>
+
+<footer>
+    <h2>KHUDKA</h2>
+    <p>Your Style. Your Design. Your Khudka.</p>
+    <br>
+    <p>© 2026 KHUDKA. All Rights Reserved.</p>
+</footer>
+
+<script>
+
+let cart = 0;
+
+function addCart() {
+    cart++;
+    document.getElementById("cart").innerText =
+    "Cart: " + cart;
+
+    alert("Product added to cart!");
+}
+
+function changeDesign() {
+    let colour = document.getElementById("colour").value;
+
+    document.getElementById("preview").style.background =
+    colour;
+}
+
+function customOrder() {
+
+    let size = document.getElementById("size").value;
+    let colour = document.getElementById("colour").value;
+    let design = document.getElementById("design").value;
+    let idea = document.getElementById("idea").value;
+
+    cart++;
+
+    document.getElementById("cart").innerText =
+    "Cart: " + cart;
+
+    document.getElementById("message").innerText =
+    "Your design has been added! Size: " + size +
+    ". Design: " + design +
+    ". Your idea: " + (idea || "No additional details");
+
+}
+
+</script>
+
+</body>
+  </html>
